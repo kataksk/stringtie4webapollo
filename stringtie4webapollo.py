@@ -1,5 +1,4 @@
 import sys
-import re
 
 stringtie_gtf_input = sys.argv[1]
 
