@@ -2,7 +2,7 @@ import sys
 
 stringtie_gtf_input = sys.argv[1]
 
-def converter(feature, type):
+def feature_converter(feature, type):
     if type == 'transcript':
         feature_split = feature.split('"; ')
         id_start = feature_split[1].find('"')
@@ -20,5 +20,5 @@ with open(stringtie_gtf_input, 'r') as f:
             continue
         else:
             line = line.rstrip('\n').split('\t')
-            output = '\t'.join(line[0:8]) + '\t' + converter(line[8], line[2])
+            output = '\t'.join(line[0:8]) + '\t' + feature_converter(line[8], line[2])
             print(output)
