@@ -20,5 +20,17 @@ with open(stringtie_gtf_input, 'r') as f:
             continue
         else:
             line = line.rstrip('\n').split('\t')
-            output = '\t'.join(line[0:8]) + '\t' + feature_converter(line[8], line[2])
-            print(output)
+            if line[2] == 'transcript':
+                # line[2] = 'mRNA'
+                # print(line)
+                # output = '\t'.join(line[0:8]) + '\t' + feature_converter(line[8], line[2])
+                output = '\t'.join(line[0:2]) + '\t' + 'mRNA' + '\t' +'\t'.join(line[3:8])+ '\t' + feature_converter(line[8], line[2])
+                # output = str(line[0]) + '\t' + str(line[1]) + '\t' + str(line[2]) + '\t' + str(line[3]) + '\t' + str(line[4]) + '\t' + str(line[5]) + '\t' + str(line[6]) + '\t' + str(line[7]) + '\t' + feature_converter(line[8], line[2])
+                print(output)
+            elif line[2] == 'exon':
+                # line[2] = 'CDS'
+                # print(line)
+                # output = '\t'.join(line[0:8]) + '\t' + feature_converter(line[8], line[2])
+                output = '\t'.join(line[0:2]) + '\t' + 'CDS' + '\t' +'\t'.join(line[3:8])+ '\t' + feature_converter(line[8], line[2])
+                # output = str(line[0]) + '\t' + str(line[1]) + '\t' + str(line[2]) + '\t' + str(line[3]) + '\t' + str(line[4]) + '\t' + str(line[5]) + '\t' + str(line[6]) + '\t' + str(line[7]) + '\t' + feature_converter(line[8], line[2])
+                print(output)
